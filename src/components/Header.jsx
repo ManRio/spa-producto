@@ -24,20 +24,20 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all ${
-        scrolled ? 'backdrop-blur bg-white/70 shadow-md' : 'bg-transparent'
+        scrolled ? 'backdrop-blur bg-brand-gray/10 shadow-md' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <a href='#' className="text-xl font-bold text-brand-600" >
-          <h1>BoXingGloves</h1> {/* TODO = Cambiar por el logo cuando lo tengamos */}
+      <div className='max-w-7xl mx-auto px-2 py-1 flex items-center justify-between'>
+        <a href='#' className=''>
+          <img src='/images/logo.png' alt='Logo' className='h-40 w-auto' />
         </a>
 
-        <nav className="hidden md:flex gap-8 text-sm font-medium" >
+        <nav className='hidden md:flex gap-8 font-medium'>
           {links.map((link) => (
             <a
-            key={link.name}
-            href={link.href}
-            className='text-neutral-700 hover:text-brand-600 transition-all'
+              key={link.name}
+              href={link.href}
+              className='text-brand-light text-2xl hover:text-brand-red transition-all'
             >
               {link.name}
             </a>
@@ -45,15 +45,17 @@ export default function Header() {
         </nav>
 
         {/* CTA Botón */}
-        <a 
-        href='#cta'
-        className="hidden md:inline-block bg-brand-500 text-white px-5 py2 rounded-xl shadow hover:shadow-md transition-all"
-        >¿Te sponsorizamos?</a>
+        <a
+          href='#cta'
+          className='hidden md:inline-block text-xl bg-brand-red text-brand-light px-5 py-2 rounded-xl shadow hover:shadow-md transition-all'
+        >
+          ¿Te sponsorizamos?
+        </a>
 
         {/* Botón menú móvil */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className='md:hidden p-2 rounded-lg hover:bg-neutral-100'
+          className='text-brand-red md:hidden p-2 rounded-lg hover:bg-neutral-100'
           aria-label='Abrir menú'
         >
           {isOpen ? <HiX size={24} /> : <HiMenu size={24} />}
@@ -85,7 +87,7 @@ export default function Header() {
               <li>
                 <a
                   href='#cta'
-                  className='bg-brand-500 text-white px-5 py-2 rounded-xl shadow hover:shadow-md transition-all'
+                  className='bg-brand-light text-brand-red px-5 py-2 rounded-xl shadow hover:shadow-md transition-all'
                   onClick={() => setIsOpen(false)}
                 >
                   Te Sponsorizamos

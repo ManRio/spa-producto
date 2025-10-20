@@ -2,3 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+/* --- Estilos base personalizados --- */
+
+/* 1️⃣ Reset mínimo adicional (complementa Preflight) */
+html,
+body,
+#root {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-brand-light text-brand-black font-body antialiased;
+}
+
+/* 2️⃣ Imágenes y vídeos responsivos por defecto */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 3️⃣ Enlaces sin subrayado pero con hover */
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+a:hover {
+  transform: scale(1.10); ;
+}
+
+/* 4️⃣ Titulares con tipografía y mayúsculas (coherencia visual) */
+h1,
+h2 {
+  @apply font-title uppercase tracking-wider2 text-brand-black;
+}
+h3 {
+  @apply font-subtitle uppercase text-brand-gray;
+}
+p {
+  @apply font-body text-brand-gray leading-relaxed;
+}
+
+/* 5️⃣ Botones por defecto (base) */
+.btn {
+  @apply font-cta bg-brand-red text-white px-6 py-3 rounded-xl shadow-sm hover:bg-brand-black transition-all;
+}
+
+/* 6️⃣ Foco accesible */
+:focus-visible {
+  outline: 2px solid theme('colors.brand.red');
+  outline-offset: 2px;
+}

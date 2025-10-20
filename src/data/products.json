@@ -1,0 +1,48 @@
+[
+  {
+    "id": "glove-pro",
+    "name": "Guantes Pro Series",
+    "description": "Cuero premium, doble costura y ajuste ergonómico. Ideal para sparring y competición.",
+    "price": 129.9,
+    "images": [
+      "/images/products/pro/main.jpg",
+      "/images/products/pro/alt1.png",
+      "/images/products/pro/alt2.png",
+      "/images/products/pro/alt3.png"
+    ]
+  },
+  {
+    "id": "glove-elite",
+    "name": "Guantes Elite Carbon",
+    "description": "Espuma multicapa y ventilación lateral. Protección superior de muñeca.",
+    "price": 149.0,
+    "images": [
+      "/images/products/elite/main.jpg",
+      "/images/products/elite/alt1.png",
+      "/images/products/elite/alt2.png",
+      "/images/products/elite/alt3.png"
+    ]
+  },
+  {
+    "id": "wraps",
+    "name": "Vendas Elásticas 4.5m",
+    "description": "Compresión firme y transpirable. Cierre de velcro reforzado.",
+    "price": 14.99,
+    "images": [
+      "/images/products/wraps/main.png",
+      "/images/products/wraps/alt1.png",
+      "/images/products/wraps/alt2.png"
+    ]
+  },
+  {
+    "id": "headgear",
+    "name": "Casco Protector Pro",
+    "description": "Cobertura ampliada con campo de visión claro. Interior antibacteriano.",
+    "price": 89.5,
+    "images": [
+      "/images/products/headgear/main.png",
+      "/images/products/headgear/alt1.png",
+      "/images/products/headgear/alt2.png"
+    ]
+  }
+]
