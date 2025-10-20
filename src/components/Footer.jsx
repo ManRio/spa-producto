@@ -38,7 +38,7 @@ export default function Footer() {
             {/* Col 1: Branding */}
             <div>
               <a href="#inicio" className="inline-flex items-center gap-3">
-                <img src="/images/logo.png" alt="BoxingGloves" className="h-12 w-auto" />
+                <img src="/images/logo.png" alt="BoxingGloves" className="h-40 w-auto" />
                 <span className="sr-only">BoxingGloves</span>
               </a>
               <p className="mt-4 text-white/75 text-sm leading-relaxed">
@@ -107,7 +107,7 @@ export default function Footer() {
 
           {/* Línea + copyright */}
           <div className="mt-8 border-t border-white/15 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-white/60 text-sm">© {year} BoxingGloves. Todos los derechos reservados.</p>
+            <p className="text-white/60 text-sm">© {year} BoxingGloves</p>
             <ul className="flex items-center gap-4 text-white/60 text-sm">
               {legal.map((l) => (
                 <li key={l.label}>

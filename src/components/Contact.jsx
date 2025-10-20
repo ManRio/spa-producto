@@ -237,6 +237,7 @@ function SponsorForm() {
 
   return (
     <form
+      id="cta"
       onSubmit={onSubmit}
       className='
         rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl
@@ -291,7 +292,7 @@ function SponsorForm() {
             id='role'
             value={data.role}
             onChange={onChange}
-            className='w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 outline-none focus:border-brand-red'
+            className='w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 outline-none focus:border-brand-red text'
           >
             <option>Gimnasio</option>
             <option>Boxeador/a</option>

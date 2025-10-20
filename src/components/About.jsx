@@ -34,9 +34,9 @@ export default function About() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className='
           relative z-10 mx-auto w-[92vw] max-w-3xl
-          rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl
+          rounded-2xl border border-white/15 bg-brand-gray/60 backdrop-blur-xl
           shadow-[0_8px_30px_rgba(0,0,0,0.35)]
-          px-6 md:px-10 py-8 md:py-10 text-center text-white
+          px-6 md:px-10 py-8 md:py-10 text-center text-white mt-20
         '
       >
         <motion.h2
@@ -44,7 +44,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 1.0 }}
-          className='font-title uppercase tracking-wider2 text-4xl md:text-5xl text-brand-red'
+          className='font-title uppercase tracking-wider2 text-6xl md:text-7xl text-brand-red'
         >
           Nuestra Pasión
         </motion.h2>
@@ -54,7 +54,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 1.0 }}
-          className='mt-4 text-white/85 leading-relaxed'
+          className='mt-4 text-white/85 text-lg leading-relaxed'
         >
           En <span className='font-semibold text-brand-red'>BoxingGloves</span>{' '}
           creemos que cada golpe cuenta. Diseñamos y personalizamos guantes con
@@ -75,7 +75,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.9 + i * 0.06, duration: 2.0 }}
-              className='rounded-xl border border-white/15 bg-brand-red/50 backdrop-blur-md px-4 py-3'
+              className='rounded-xl border border-white/15 bg-brand-red/50 backdrop-blur-md px-4 py-3 text-lg font-medium'
             >
               {t}
             </motion.div>
@@ -91,7 +91,7 @@ export default function About() {
           className='mt-6 text-white/70'
         >
           Hecho por boxeadores,{' '}
-          <span className='font-bold text-brand-red'>para boxeadores.</span>
+          <span className='font-bold text-brand-red text-xl'>para boxeadores.</span>
         </motion.p>
       </motion.div>
     </section>
