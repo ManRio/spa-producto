@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCart } from '../context/CartContext.jsx';
 
 export default function ProductCard({ product, onAddToCart }) {
+  const { addToCart } = useCart();
   const [idx, setIdx] = useState(0);
   const images =
     Array.isArray(product?.images) && product.images.length > 0
@@ -91,7 +93,7 @@ export default function ProductCard({ product, onAddToCart }) {
           </span>
 
           <button
-            onClick={() => onAddToCart?.(product)}
+            onClick={() => addToCart(product)}
             className='
               btn font-cta bg-brand-red text-white px-4 py-2 rounded-xl
               shadow hover:bg-brand-black transition-all

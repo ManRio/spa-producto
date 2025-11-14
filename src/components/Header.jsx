@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
+import { HiShoppingCart } from 'react-icons/hi2';
+import { useCart } from '../context/CartContext';
 
-export default function Header() {
+export default function Header({ onCartClick }) {
+  // ✅ aquí
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  // Detectamos cambios en el scroll para suavizar el header
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -15,7 +17,7 @@ export default function Header() {
   }, []);
 
   const links = [
-    { name: 'Inicio', href: '#' },
+    { name: 'Inicio', href: '#inicio' }, // opcional: que apunte a la sección
     { name: 'Productos', href: '#productos' },
     { name: 'Nosotros', href: '#nosotros' },
     { name: 'Contacto', href: '#contacto' },
@@ -23,12 +25,12 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all ${
+      className={`fixed top-0 left-0 w-full z-30 transition-all ${
         scrolled ? 'backdrop-blur bg-brand-gray/10 shadow-md' : 'bg-transparent'
       }`}
     >
       <div className='max-w-7xl mx-auto px-2 py-1 flex items-center justify-between'>
-        <a href='#' className=''>
+        <a href='#inicio'>
           <img src='/images/logo.png' alt='Logo' className='h-40 w-auto' />
         </a>
 
@@ -44,22 +46,38 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* CTA Botón */}
-        <a
-          href='#cta'
-          className='hidden md:inline-block text-xl bg-brand-red text-brand-light px-5 py-2 rounded-xl shadow hover:shadow-md transition-all'
-        >
-          ¿Te sponsorizamos?
-        </a>
+        <div className='flex items-center gap-3'>
+          {/* CTA Botón */}
+          <a
+            href='#cta'
+            className='hidden md:inline-block text-xl bg-brand-red text-brand-light px-5 py-2 rounded-xl shadow hover:shadow-md transition-all'
+          >
+            ¿Te sponsorizamos?
+          </a>
 
-        {/* Botón menú móvil */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className='text-brand-red md:hidden p-2 rounded-lg hover:bg-neutral-100'
-          aria-label='Abrir menú'
-        >
-          {isOpen ? <HiX size={24} /> : <HiMenu size={24} />}
-        </button>
+          {/* Botón carrito */}
+          <button
+            onClick={onCartClick} // ✅ ahora viene por props
+            className='relative p-2 rounded-full bg-white/10 hover:bg-white/20 text-white'
+            aria-label='Abrir carrito'
+          >
+            <HiShoppingCart size={22} />
+            {totalItems > 0 && (
+              <span className='absolute -top-1 -right-1 min-w-[18px] h-[18px] rounded-full bg-brand-red text-[11px] flex items-center justify-center text-white'>
+                {totalItems}
+              </span>
+            )}
+          </button>
+
+          {/* Botón menú móvil */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className='text-brand-red md:hidden p-2 rounded-lg hover:bg-neutral-100'
+            aria-label='Abrir menú'
+          >
+            {isOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Menú móvil animado */}
