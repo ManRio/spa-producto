@@ -1,19 +1,34 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
+  const [videoReady, setVideoReady] = useState(false);
   return (
     <section
       id='inicio'
       className='relative h-[100vh] w-full overflow-hidden flex items-center justify-center'
     >
+      {/* Fondo estático - Póster */}
+      <img
+        src='/public/media/hero-poster.jpg'
+        alt='Fondo estático'
+        aria-hidden='true'
+        className='absolute inset-0 w-full h-full object-cover'
+      />
+
       {/* 🎥 Vídeo de fondo */}
       <video
-        className='absolute inset-0 w-full h-full object-cover pointer-events-none motion-reduce:hidden'
+        className={
+          'absolute inset-0 w-full h-full object-cover pointer-events-none motion-reduce:hidden transition-opacity duration-700 ' +
+          (videoReady ? 'opacity-100' : 'opacity-0')
+        }
         src='/media/hero.mp4'
         autoPlay
         muted
         loop
         playsInline
+        preload='metadata'
+        onLoadedData={() => setVideoReady(true)}
       />
 
       {/* 🌫️ Overlay para contraste */}
@@ -40,7 +55,8 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              BO<span className='text-brand-red font-extrabold'>X</span>ING~GLOVES
+              BO<span className='text-brand-red font-extrabold'>X</span>
+              ING~GLOVES
             </motion.h1>
 
             <motion.div

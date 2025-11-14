@@ -1,19 +1,32 @@
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 export default function About() {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    rootMargin: '0px 0px -100px 0px', // Dispara un poco antes de entrar completamente en vista
+  });
   return (
     <section
       id='nosotros'
       className='relative h-[100vh] w-full overflow-hidden flex items-center justify-center'
     >
+      {/* Poster siempre visible */}
+      <img
+        src='/public/media/hero-poster.jpg'
+        alt='poster estático'
+        aria-hidden='true'
+        className='absolute inset-0 w-full h-full object-cover'
+      />
       {/* 🎥 Vídeo de fondo */}
       <video
-        className='absolute inset-0 w-full h-full object-cover pointer-events-none motion-reduce:hidden'
+        className='absolute inset-0 w-full h-full object-cover pointer-events-none motion-reduce:hidden transition-opacity duration-700'
         src='/media/about.mp4' // ← pon tu vídeo aquí
         autoPlay
         muted
         loop
         playsInline
+        preload='none'
       />
       {/* Fallback estático si el usuario prefiere reducir movimiento */}
       <img
@@ -91,7 +104,9 @@ export default function About() {
           className='mt-6 text-white/70'
         >
           Hecho por boxeadores,{' '}
-          <span className='font-bold text-brand-red text-xl'>para boxeadores.</span>
+          <span className='font-bold text-brand-red text-xl'>
+            para boxeadores.
+          </span>
         </motion.p>
       </motion.div>
     </section>
