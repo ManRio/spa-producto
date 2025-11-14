@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useToast } from '../context/ToastContext.jsx';
 
 // Utilidades simples
 const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -27,6 +29,7 @@ function ContactForm() {
   });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ ok: false, msg: '' });
+  const { showToast } = useToast();
 
   const onChange = (e) => {
     const { id, value, type, checked } = e.target;
@@ -46,17 +49,17 @@ function ContactForm() {
 
   const onSubmit = (ev) => {
     ev.preventDefault();
-    // Honeypot: si viene relleno, abortar
-    if (data.website) return;
+    if (data.website) return; // honeypot
 
     const e = validate();
     setErrors(e);
     if (Object.keys(e).length) return;
 
-    // Simulación de envío
     setTimeout(() => {
       setStatus({ ok: true, msg: '¡Gracias! Te responderemos pronto.' });
-      // Reset básico
+      showToast('Mensaje enviado. Te responderemos pronto 🥊', {
+        type: 'success',
+      });
       setData({
         name: '',
         email: '',
@@ -190,6 +193,7 @@ function SponsorForm() {
   });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ ok: false, msg: '' });
+  const { showToast } = useToast();
 
   const onChange = (e) => {
     const { id, value, type, checked } = e.target;
@@ -220,6 +224,9 @@ function SponsorForm() {
         ok: true,
         msg: '¡Gracias! Revisaremos tu propuesta de patrocinio.',
       });
+      showToast('Propuesta de patrocinio enviada 💼🥊', {
+        type: 'success',
+      });
       setData({
         name: '',
         email: '',
@@ -237,7 +244,7 @@ function SponsorForm() {
 
   return (
     <form
-      id="cta"
+      id='cta'
       onSubmit={onSubmit}
       className='
         rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl
@@ -407,19 +414,31 @@ export default function Contact() {
       </div>
 
       <div className='relative mx-auto max-w-7xl px-4 mt-20'>
-        <header className='mb-10 text-center'>
+        <motion.header
+          className='mb-10 text-center'
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+        >
           <h2 className='font-title uppercase tracking-wider2 text-4xl md:text-5xl text-white/90'>
             Contacto & Sponsors
           </h2>
           <p className='mt-2 text-white/70'>
             ¿Tienes dudas? ¿Buscas patrocinio? Escríbenos.
           </p>
-        </header>
+        </motion.header>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8'>
+        <motion.div
+          className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8'
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+        >
           <ContactForm />
           <SponsorForm />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
