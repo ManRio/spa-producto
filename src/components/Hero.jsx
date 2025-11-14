@@ -10,7 +10,7 @@ export default function Hero() {
     >
       {/* Fondo estático - Póster */}
       <img
-        src='/public/media/hero-poster.jpg'
+        src='/media/hero-poster.jpg'
         alt='Fondo estático'
         aria-hidden='true'
         className='absolute inset-0 w-full h-full object-cover'

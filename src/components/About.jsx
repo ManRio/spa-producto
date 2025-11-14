@@ -13,7 +13,7 @@ export default function About() {
     >
       {/* Poster siempre visible */}
       <img
-        src='/public/media/hero-poster.jpg'
+        src='/media/hero-poster.jpg'
         alt='poster estático'
         aria-hidden='true'
         className='absolute inset-0 w-full h-full object-cover'
